@@ -1304,7 +1304,98 @@ a.contact-row:hover { color: #fff; }
 }
 
 /* ══════════════════════════════════════
-   RESPONSIVE
+   DESKTOP ONLY ELEMENTS
+   ══════════════════════════════════════ */
+.desktop-only {
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════
+   MOBILE MENU / HAMBURGER
+   ══════════════════════════════════════ */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.mobile-menu-btn span {
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 15, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px;
+  z-index: 99;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-nav.active {
+  display: flex;
+}
+
+.mobile-nav a {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+/* Touch-friendly hover states for mobile */
+@media (hover: none) {
+  .hover-lift:active {
+    transform: scale(0.98);
+  }
+  
+  .hover-glow:active {
+    border-color: var(--accent);
+  }
+  
+  .schip:active {
+    border-color: var(--accent);
+    background: rgba(79,140,255,0.08);
+  }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE - TABLET
    ══════════════════════════════════════ */
 @media (max-width: 900px) {
   .hero-inner {
@@ -1314,6 +1405,7 @@ a.contact-row:hover { color: #fff; }
 
   .hero-right {
     max-width: 360px;
+    margin: 0 auto;
   }
 
   .hero-name { font-size: 40px; }
@@ -1328,6 +1420,7 @@ a.contact-row:hover { color: #fff; }
     padding: 20px 24px;
     flex-direction: row;
     gap: 12px;
+    justify-content: space-between;
   }
 
   .proj-grid {
@@ -1344,47 +1437,133 @@ a.contact-row:hover { color: #fff; }
   }
 
   .nav-links { display: none; }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .nav-inner {
+    justify-content: space-between;
+  }
 }
 
+/* ══════════════════════════════════════
+   RESPONSIVE - MOBILE
+   ══════════════════════════════════════ */
 @media (max-width: 600px) {
-  .hero { padding: 100px 16px 60px; }
-  .sec { padding: 60px 16px; }
+  html {
+    scroll-padding-top: 60px;
+  }
+  
+  .hero { 
+    padding: 90px 16px 50px; 
+  }
+  
+  .sec { 
+    padding: 50px 16px; 
+  }
 
-  .hero-name { font-size: 32px; }
+  .hero-name { 
+    font-size: 28px; 
+    letter-spacing: -1px;
+  }
+  
+  .hero-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
 
   .hero-stats {
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 8px;
+    justify-content: center;
   }
 
-  .stat-sep { display: none; }
+  .stat-sep { 
+    display: none; 
+  }
 
   .stat-item {
-    padding: 0 16px;
+    padding: 8px 12px;
+    min-width: 70px;
+  }
+  
+  .stat-val {
+    font-size: 22px;
+  }
+  
+  .stat-lbl {
+    font-size: 10px;
   }
 
   .hero-btns {
     flex-direction: column;
+    gap: 10px;
   }
 
   .btn-primary, .btn-secondary, .btn-ghost {
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+  
+  .hero-roles {
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .hero-bio {
+    font-size: 14px;
     text-align: center;
   }
 
   .proj-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .proj-card {
+    padding: 24px;
   }
 
   .ach-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .ach-card {
+    padding: 20px 16px;
+  }
+  
+  .ach-icon {
+    font-size: 24px;
+  }
+  
+  .ach-title {
+    font-size: 13px;
+  }
+  
+  .ach-sub {
+    font-size: 11px;
   }
 
   .edu-top {
     flex-direction: column;
     gap: 12px;
+    padding: 24px;
   }
-
-  .edu-gpa { font-size: 22px; }
+  
+  .edu-proj {
+    padding: 24px;
+  }
+  
+  .edu-gpa { 
+    font-size: 24px; 
+  }
+  
+  .edu-school {
+    font-size: 18px;
+  }
 
   .footer-inner {
     flex-direction: column;
@@ -1395,9 +1574,140 @@ a.contact-row:hover { color: #fff; }
   .footer-left {
     flex-direction: column;
   }
+  
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
 
   .skill-row {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 12px;
+    padding: 20px 0;
+  }
+  
+  .skill-label {
+    font-size: 12px;
+  }
+  
+  .skill-chips {
+    gap: 6px;
+  }
+  
+  .schip {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+  
+  .sec-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  
+  .sec-title {
+    font-size: 24px;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .contact-card-large {
+    padding: 28px 24px;
+  }
+  
+  .contact-card-icon {
+    font-size: 36px;
+  }
+  
+  .contact-card-title {
+    font-size: 18px;
+  }
+  
+  .contact-card-desc {
+    font-size: 13px;
+  }
+  
+  .contact-suggestion {
+    padding: 24px;
+  }
+  
+  .suggestion-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .suggestion-list li {
+    font-size: 13px;
+  }
+  
+  .exp-left {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .exp-period {
+    font-size: 12px;
+  }
+  
+  .exp-body {
+    padding: 20px;
+  }
+  
+  .exp-company {
+    font-size: 16px;
+  }
+  
+  .exp-role {
+    font-size: 13px;
+  }
+  
+  .exp-bullets li {
+    font-size: 12px;
+  }
+  
+  .photo-wrap {
+    aspect-ratio: 1 / 1;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  .contact-box {
+    padding: 16px;
+  }
+  
+  .particles {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE - SMALL MOBILE
+   ══════════════════════════════════════ */
+@media (max-width: 380px) {
+  .hero-name {
+    font-size: 24px;
+  }
+  
+  .stat-item {
+    min-width: 60px;
+    padding: 6px 8px;
+  }
+  
+  .stat-val {
+    font-size: 20px;
+  }
+  
+  .ach-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn-primary, .btn-secondary, .btn-ghost {
+    padding: 12px 20px;
+    font-size: 14px;
   }
 }

@@ -302,6 +302,7 @@ function TiltCard({ children, className = "" }) {
 }
 
 export default function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [nameRef, typedName, showCursor] = useTypingEffect("Raden Muhammad Faqih", 80, 300);
   
   return (
@@ -310,14 +311,35 @@ export default function App() {
       {/* ── NAVBAR ── */}
       <nav className="nav animate-fade-in">
         <div className="nav-inner">
+          <span className="nav-logo">RMF</span>
+          
           <div className="nav-links">
             <a href="#about" className="magnetic-btn">About</a>
             <a href="#experience" className="magnetic-btn">Experience</a>
             <a href="#projects" className="magnetic-btn">Projects</a>
             <a href="#skills" className="magnetic-btn">Skills</a>
-            <a href="#contact" className="magnetic-btn">Contact</a>
+            <a href="#contact-section" className="magnetic-btn">Contact</a>
           </div>
-          <a href="mailto:faqihintiatom@gmail.com" className="nav-hire ripple">Hire Me</a>
+          
+          <a href="mailto:faqihintiatom@gmail.com" className="nav-hire ripple desktop-only">Hire Me</a>
+          
+          <div 
+            className={`mobile-menu-btn ${mobileMenuOpen ? 'active' : ''}`} 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        
+        <div className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
+          <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
+          <a href="#experience" onClick={() => setMobileMenuOpen(false)}>Experience</a>
+          <a href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</a>
+          <a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a>
+          <a href="#contact-section" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+          <a href="mailto:faqihintiatom@gmail.com" className="nav-hire ripple" style={{marginTop: '10px', textAlign: 'center'}}>Hire Me</a>
         </div>
       </nav>
 
